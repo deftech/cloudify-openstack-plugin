@@ -59,7 +59,8 @@ class OpenstackPluginTestCase(PluginsTest):
 
     def upload_plugins(self):
         self.upload_mock_plugin(
-            PLUGIN_NAME, self.plugin_root_directory)
+            PLUGIN_NAME,
+            os.path.join(DEVELOPMENT_ROOT, PLUGIN_NAME))
         self.upload_mock_plugin(
             'cloudify-utilities-plugin',
             os.path.join(DEVELOPMENT_ROOT, 'cloudify-utilities-plugin'))
