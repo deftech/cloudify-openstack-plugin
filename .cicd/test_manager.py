@@ -58,6 +58,11 @@ class OpenstackPluginTestCase(PluginsTest):
         self._create_secrets(secrets)
 
     def upload_plugins(self):
+        self.logger.info('In upload plugins.')
+        self.logger.info('This is the current dir: {0}'.format(os.curdir))
+        self.logger.info('The build dir is: {0}'.format(os.path.join(DEVELOPMENT_ROOT, PLUGIN_NAME)))
+        self.logger.info('The build dir is: {0}'.format(self.plugin_root_directory))
+        self.logger.info('This is what is in that directory: {0}'.format(os.listdir(self.plugin_root_directory)))
         self.upload_mock_plugin(
             PLUGIN_NAME,
             os.path.join(DEVELOPMENT_ROOT, PLUGIN_NAME))
