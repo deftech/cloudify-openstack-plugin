@@ -17,9 +17,9 @@ import os
 
 from integration_tests.tests.test_cases import PluginsTest
 
-DEVELOPMENT_ROOT = os.path.abspath(
+DEVELOPMENT_ROOT = os.environ.get('REPO_BASE', os.path.abspath(
     os.path.join(os.path.dirname(
-        os.path.realpath(__file__)), '../..'))
+        os.path.realpath(__file__)), '../..')))
 PLUGIN_NAME = 'cloudify-openstack-plugin'
 
 
