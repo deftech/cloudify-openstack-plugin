@@ -646,7 +646,7 @@ class Config(object):
     def update_config(overridden_cfg, overriding_cfg):
         """ this method is like dict.update() only that it doesn't override
         with (or set new) empty values (e.g. empty string) """
-        for k, v in overriding_cfg.iteritems():
+        for k, v in list(overriding_cfg.items()):
             if v:
                 overridden_cfg[k] = v
 
@@ -687,7 +687,7 @@ class OpenStackClient(object):
                 for key in removed_keys:
                     del cfg[key]
 
-        v3 = '/v3' in cfg['auth_url']
+        v3 = u'/v3' in cfg[u'auth_url']
         # Newer libraries expect the region key to be `region_name`, not
         # `region`.
         region = cfg.pop('region', None)
@@ -1292,9 +1292,9 @@ def _re_raise(e, recoverable, retry_after=None, status_code=None):
             retry_after = None
         raise RecoverableError(
             message=message,
-            retry_after=retry_after), None, traceback
+            retry_after=retry_after)
     else:
-        raise NonRecoverableError(message), None, traceback
+        raise NonRecoverableError(message)
 
 
 # Sugar for clients
